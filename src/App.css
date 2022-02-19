@@ -38,19 +38,3 @@
   }
 }
 
-.heart {
-  height: 100px;
-  width: 100px;
-  background-color: red;
-  transform: rotate(-45deg);
-  position: relative
-}
-.heart::before,
-.heart::after{
-  content: "";
-  height: 100px;
-  width: 100px;
-  background-color: red;
-  border-radius: 50%;
-  position: absolute;
-}
