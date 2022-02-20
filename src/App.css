@@ -10,7 +10,7 @@
 }
 .navbar li {
   list-style-type: none;
-  display: 
+  display: flex;
 
 }
 
