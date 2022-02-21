@@ -5,12 +5,14 @@ export default function Navbar() {
         <nav className="nav">
             <i class="fa-solid fa-seedling"></i>
             <h1>AutismKidsLife</h1>
-            <ul>
+{/*             <ul className="navlinks">
                 <li>about</li>
                 <li>media</li>
                 <li>contact</li>
-            </ul>
-
+            </ul> */}
+            <a href="#">about</a>
+            <a href="#">media</a>
+            <a href="#">contact</a>
         </nav>
 
     )  
