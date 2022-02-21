@@ -8,11 +8,14 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  background-color: rgb(151, 22, 206);
+  color: whitesmoke;
 }
 
 
 a {
   text-decoration: none;
+  color: whitesmoke;
 }
 
 
