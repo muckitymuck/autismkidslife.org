@@ -1,0 +1,22 @@
+.App {
+
+}
+
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+
+a {
+  text-decoration: none;
+
+}
+
+
+
+
