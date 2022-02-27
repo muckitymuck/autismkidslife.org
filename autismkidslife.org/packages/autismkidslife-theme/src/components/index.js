@@ -4,8 +4,9 @@ import Link from "@frontity/components/link"
 import Switch from "@frontity/components/switch"
 import List from "./list"
 import Post from "./post"
+import Page from "./page"
 
-const Root = ( { state }) => {
+const Root = ( { state, actions }) => {
   const data = state.source.get(state.router.link)
   return (
     <>
@@ -21,38 +22,51 @@ const Root = ( { state }) => {
           }
         `}
       />
-      <Header>
-          <HeaderContent>
-            <h1>AutismKidsLife</h1>
-            <p>Current URL: {state.router.link}</p>
-            <Menu>
-              <Link link="/">Home</Link>
-              <br />
-              <Link link="/page/2">More Posts</Link>
-              <br />
-              <Link link="/about-us">About Us</Link>
-            </Menu>
-          </HeaderContent>
+      {/* checks if the page is a Post or a Page  */}
+      <Header isPostType={data.isPostType} isPage={data.isPage}>
+
+        <HeaderContent>
+
+          <h1>AutismKidsLife</h1>
+
+          { state.theme.isUrlVisible ? ( 
+            <>
+              Current URL: {state.router.link}{" "} 
+              <button onClick={actions.theme.toggleUrl}>&#x3c; Hide URL</button>
+            </> 
+          ) : ( 
+              <button onClick={actions.theme.toggleUrl}>Show URL &#x3e;</button>
+            ) 
+          }
+          <Menu>
+            <Link link="/">Home</Link>
+            <Link link="/destinations">Destinations</Link>
+            <Link link="/about-us">About Us</Link>
+          </Menu>
+
+
+        </HeaderContent>
       </Header>
       <hr />
       <main>
         <Switch>
-          <List when={data.isArchive}></List>
+          <List when={data.isArchive} />
           <Post when={data.isPost} />
-          <Post when={data.isPage} />
+          <Page when={data.isPage} />
+          <Page when={data.isDestinations} />
         </Switch>
       </main>
     </>
   )
 }
 
-export default connect(Root)
+
 
 const Header = styled.header `
   background-color: #e5edee;
   border-width: 0 0 8px 0;
   border-style: solid;
-  border-color: maroon;
+  border-color: ${ props => props.isPostType ? ( props.isPage ? 'lightsteelblue' : 'lightseagreen' ) : 'maroon'};
 
   h1 {
     color: #4a4a4a;
@@ -89,5 +103,16 @@ const Menu = styled.nav`
     text-decoration: none;
   }
 `
+const button = styled.button`
+  background: transparent;
+  border: none;
+  color: #aaa;
 
-  
+  :hover {
+    cursor: pointer;
+    color: #888;
+  }
+`
+
+
+export default connect(Root)
