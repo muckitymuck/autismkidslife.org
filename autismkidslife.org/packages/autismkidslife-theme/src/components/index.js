@@ -1,15 +1,25 @@
 import React from "react"
-import { connect, Global, css, styled  } from "frontity"
+import { connect, Global, css, styled, Head  } from "frontity"
 import Link from "@frontity/components/link"
 import Switch from "@frontity/components/switch"
 import List from "./list"
 import Post from "./post"
 import Page from "./page"
+import Loading from "./loading"
+import Error from "./error"
 
 const Root = ( { state, actions }) => {
-  const data = state.source.get(state.router.link)
+  const data = state.source.get(state.router.link);
   return (
     <>
+      <Head>
+        <title>AutismKidsLife</title>
+        <meta
+          name="description"
+          content="One Family's journey to recover from childhood Autism"
+          />
+      </Head>
+
       <Global
         styles={css`
           * {
@@ -50,10 +60,12 @@ const Root = ( { state, actions }) => {
       <hr />
       <main>
         <Switch>
+          <Loading when={data.isFetching} />
           <List when={data.isArchive} />
           <Post when={data.isPost} />
           <Page when={data.isPage} />
           <Page when={data.isDestinations} />
+          <Error when={data.isError} />
         </Switch>
       </main>
     </>

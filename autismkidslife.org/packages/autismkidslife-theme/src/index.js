@@ -1,4 +1,5 @@
 import Root from "./components"
+import link from "@frontity/html2react/processors/link"
 
 const autismKidsLifeTheme = {
   name: "autismkidslife-theme",
@@ -17,6 +18,11 @@ const autismKidsLifeTheme = {
       }
     },
   },
+  libraries: {
+    html2react: {
+      processors: [link]
+    }
+  }
 }
 
 export default autismKidsLifeTheme
