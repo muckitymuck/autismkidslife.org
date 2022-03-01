@@ -1,12 +1,12 @@
-import React from "react"
-import { connect, Global, css, styled, Head  } from "frontity"
-import Link from "@frontity/components/link"
-import Switch from "@frontity/components/switch"
-import List from "./list"
-import Post from "./post"
-import Page from "./page"
-import Loading from "./loading"
-import Error from "./error"
+import React from "react";
+import { connect, Global, css, styled, Head  } from "frontity";
+import Link from "@frontity/components/link";
+import Switch from "@frontity/components/switch";
+import List from "./list";
+import Post from "./post";
+import Page from "./page";
+import Loading from "./loading";
+import Error from "./error";
 
 const Root = ( { state, actions }) => {
   const data = state.source.get(state.router.link);
